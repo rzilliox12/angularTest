@@ -18,9 +18,15 @@ export class HeroService {
 
   // make it async using observables
   getHeroes(): Observable<Hero[]> {
-    // TODO: send te message _after_ fetching the heroes
+    // TODO: send the message _after_ fetching the heroes
     this.messageService.add('HeroService: fetched heroes');
     return of(HEROES);
+  }
+
+  getHero(id: number): Observable<Hero> {
+    // TODO: send the message _after_ fetching the hero
+    this.messageService.add(`HeroService: fetched hero id=${id}`);
+    return of(HEROES.find(hero => hero.id === id));
   }
 
   constructor(private messageService: MessageService) { }
